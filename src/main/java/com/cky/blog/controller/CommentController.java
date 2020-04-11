@@ -1,7 +1,7 @@
 package com.cky.blog.controller;
 
-import com.cky.blog.po.Comment;
-import com.cky.blog.po.User;
+import com.cky.blog.entity.Comment;
+import com.cky.blog.entity.User;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by limi on 2017/10/22.
- */
 @Controller
 public class CommentController {
 

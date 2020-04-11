@@ -1,14 +1,12 @@
 package com.cky.blog.service;
 
-import com.cky.blog.po.Type;
+import com.cky.blog.entity.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-/**
- * Created by limi on 2017/10/16.
- */
+
 public interface TypeService {
 
     Type saveType(Type type);

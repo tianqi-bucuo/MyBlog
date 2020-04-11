@@ -1,6 +1,6 @@
 package com.cky.blog.controller.admin;
 
-import com.cky.blog.po.Type;
+import com.cky.blog.entity.Type;
 import com.cky.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-/**
- * Created by limi on 2017/10/16.
- */
 
 @Controller
 @RequestMapping("/admin")

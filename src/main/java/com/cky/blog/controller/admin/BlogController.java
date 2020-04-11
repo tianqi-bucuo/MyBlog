@@ -1,7 +1,7 @@
 package com.cky.blog.controller.admin;
 
-import com.cky.blog.po.Blog;
-import com.cky.blog.po.User;
+import com.cky.blog.entity.Blog;
+import com.cky.blog.entity.User;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.service.TagService;
 import com.cky.blog.service.TypeService;

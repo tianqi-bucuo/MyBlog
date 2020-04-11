@@ -1,6 +1,6 @@
 package com.cky.blog.service;
 
-import com.cky.blog.po.Comment;
+import com.cky.blog.entity.Comment;
 
 import java.util.List;
 

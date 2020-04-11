@@ -1,16 +1,13 @@
 package com.cky.blog.dao;
 
-import com.cky.blog.po.Tag;
+import com.cky.blog.entity.Tag;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-/**
- * Created by limi on 2017/10/16.
- */
-public interface TagRepository extends JpaRepository<Tag,Long> {
+public interface TagMapper extends JpaRepository<Tag,Long> {
 
     Tag findByName(String name);
 

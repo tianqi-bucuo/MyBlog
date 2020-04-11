@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.132.178.134:3306/blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
     username: root
     password: 026035
   jpa:
@@ -9,11 +9,24 @@ spring:
       ddl-auto: update
     show-sql: true
 
+#pagehelper分页插件配置
+pagehelper.helperDialect=mysql
+pagehelper.reasonable=true
+pagehelper.supportMethodsArguments=true
+pagehelper.params=count=countSql
+
 logging:
   level:
     root: info
     com.lrm: debug
   file: log/blog-dev.log
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  page-size-zero: false
+  support-methods-arguments: true
+
 
 
 

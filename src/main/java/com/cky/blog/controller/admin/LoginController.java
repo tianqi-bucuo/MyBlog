@@ -1,6 +1,6 @@
 package com.cky.blog.controller.admin;
 
-import com.cky.blog.po.User;
+import com.cky.blog.entity.User;
 import com.cky.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

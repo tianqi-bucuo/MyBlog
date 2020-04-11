@@ -1,6 +1,6 @@
 package com.cky.blog.controller.admin;
 
-import com.cky.blog.po.Tag;
+import com.cky.blog.entity.Tag;
 import com.cky.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

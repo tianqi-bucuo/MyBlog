@@ -1,6 +1,6 @@
 package com.cky.blog.controller;
 
-import com.cky.blog.po.Tag;
+import com.cky.blog.entity.Tag;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-/**
- * Created by limi on 2017/10/23.
- */
 @Controller
 public class TagShowController {
 
