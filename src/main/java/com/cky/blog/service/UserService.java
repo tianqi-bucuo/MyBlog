@@ -1,7 +1,6 @@
 package com.cky.blog.service;
 
-
-import com.cky.blog.entity.User;
+import com.cky.blog.po.User;
 
 public interface UserService {
 

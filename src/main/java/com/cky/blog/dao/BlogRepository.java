@@ -1,6 +1,6 @@
-package com.cky.blog.mapper;
+package com.cky.blog.dao;
 
-import com.cky.blog.entity.Blog;
+import com.cky.blog.po.Blog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface BlogRepository extends JpaRepository<Blog, Long>, JpaSpecificationExecutor<Blog> {
-
-    @Query("select b from Blog b where b.id = ?1")
-    Blog selectById(Long id);
 
     @Query("select b from Blog b where b.recommend = true")
     List<Blog> findTop(Pageable pageable);

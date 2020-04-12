@@ -1,6 +1,6 @@
-package com.cky.blog.mapper;
+package com.cky.blog.dao;
 
-import com.cky.blog.entity.Tag;
+import com.cky.blog.po.Tag;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

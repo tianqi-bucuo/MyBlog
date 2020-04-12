@@ -1,4 +1,4 @@
-package com.cky.blog.controller;
+package com.cky.blog.web;
 
 import com.cky.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;

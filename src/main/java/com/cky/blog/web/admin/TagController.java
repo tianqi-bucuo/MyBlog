@@ -1,6 +1,6 @@
-package com.cky.blog.controller.admin;
+package com.cky.blog.web.admin;
 
-import com.cky.blog.entity.Tag;
+import com.cky.blog.po.Tag;
 import com.cky.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping("/admin")

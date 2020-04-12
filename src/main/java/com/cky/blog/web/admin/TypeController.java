@@ -1,6 +1,6 @@
-package com.cky.blog.controller.admin;
+package com.cky.blog.web.admin;
 
-import com.cky.blog.entity.Type;
+import com.cky.blog.po.Type;
 import com.cky.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

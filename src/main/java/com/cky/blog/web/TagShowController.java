@@ -1,6 +1,6 @@
-package com.cky.blog.controller;
+package com.cky.blog.web;
 
-import com.cky.blog.entity.Tag;
+import com.cky.blog.po.Tag;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;

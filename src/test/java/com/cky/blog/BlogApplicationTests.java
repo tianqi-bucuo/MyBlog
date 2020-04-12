@@ -1,7 +1,6 @@
 package com.cky.blog;
 
-import com.cky.blog.mapper.TagRepository;
-import com.cky.blog.mapper.UserRepository;
+import com.cky.blog.dao.TagRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

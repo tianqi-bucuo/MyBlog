@@ -1,4 +1,4 @@
-package com.cky.blog.entity;
+package com.cky.blog.po;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class Type {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     @NotBlank(message = "分类名称不能为空")
     private String name;

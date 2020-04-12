@@ -1,10 +1,9 @@
-package com.cky.blog.service.impl;
+package com.cky.blog.service;
 
 import com.cky.blog.NotFoundException;
-import com.cky.blog.entity.Blog;
-import com.cky.blog.entity.Type;
-import com.cky.blog.mapper.BlogRepository;
-import com.cky.blog.service.BlogService;
+import com.cky.blog.dao.BlogRepository;
+import com.cky.blog.po.Blog;
+import com.cky.blog.po.Type;
 import com.cky.blog.util.MarkdownUtils;
 import com.cky.blog.util.MyBeanUtils;
 import com.cky.blog.vo.BlogQuery;
@@ -30,13 +29,13 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Blog getBlog(Long id) {
-        return blogRepository.selectById(id);
+        return blogRepository.findOne(id);
     }
 
     @Transactional
     @Override
     public Blog getAndConvert(Long id) {
-        Blog blog = blogRepository.selectById(id);
+        Blog blog = blogRepository.findOne(id);
         if (blog == null) {
             throw new NotFoundException("该博客不存在");
         }
@@ -131,7 +130,7 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
-        Blog b = blogRepository.getOne(id);
+        Blog b = blogRepository.findOne(id);
         if (b == null) {
             throw new NotFoundException("该博客不存在");
         }
@@ -143,6 +142,6 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public void deleteBlog(Long id) {
-        blogRepository.deleteById(id);
+        blogRepository.delete(id);
     }
 }

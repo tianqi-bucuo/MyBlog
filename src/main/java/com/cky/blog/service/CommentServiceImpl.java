@@ -1,8 +1,7 @@
-package com.cky.blog.service.impl;
+package com.cky.blog.service;
 
-import com.cky.blog.entity.Comment;
-import com.cky.blog.mapper.CommentRepository;
-import com.cky.blog.service.CommentService;
+import com.cky.blog.dao.CommentRepository;
+import com.cky.blog.po.Comment;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -31,7 +30,7 @@ public class CommentServiceImpl implements CommentService {
     public Comment saveComment(Comment comment) {
         Long parentCommentId = comment.getParentComment().getId();
         if (parentCommentId != -1) {
-            comment.setParentComment(commentRepository.getOne(parentCommentId));
+            comment.setParentComment(commentRepository.findOne(parentCommentId));
         } else {
             comment.setParentComment(null);
         }

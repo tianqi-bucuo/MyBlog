@@ -1,6 +1,6 @@
-package com.cky.blog.controller;
+package com.cky.blog.web;
 
-import com.cky.blog.entity.Type;
+import com.cky.blog.po.Type;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.service.TypeService;
 import com.cky.blog.vo.BlogQuery;

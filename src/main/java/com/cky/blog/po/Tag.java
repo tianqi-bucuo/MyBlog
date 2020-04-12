@@ -1,4 +1,4 @@
-package com.cky.blog.entity;
+package com.cky.blog.po;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
 

@@ -1,9 +1,8 @@
-package com.cky.blog.service.impl;
+package com.cky.blog.service;
 
 import com.cky.blog.NotFoundException;
-import com.cky.blog.entity.Tag;
-import com.cky.blog.mapper.TagRepository;
-import com.cky.blog.service.TagService;
+import com.cky.blog.dao.TagRepository;
+import com.cky.blog.po.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,7 +30,7 @@ public class TagServiceImpl implements TagService {
     @Transactional
     @Override
     public Tag getTag(Long id) {
-        return tagRepository.getOne(id);
+        return tagRepository.findOne(id);
     }
 
     @Override
@@ -60,7 +59,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<Tag> listTag(String ids) { //1,2,3
-        return tagRepository.findAll();
+        return tagRepository.findAll(convertToList(ids));
     }
 
     private List<Long> convertToList(String ids) {
@@ -78,7 +77,7 @@ public class TagServiceImpl implements TagService {
     @Transactional
     @Override
     public Tag updateTag(Long id, Tag tag) {
-        Tag t = tagRepository.getOne(id);
+        Tag t = tagRepository.findOne(id);
         if (t == null) {
             throw new NotFoundException("不存在该标签");
         }
@@ -91,6 +90,6 @@ public class TagServiceImpl implements TagService {
     @Transactional
     @Override
     public void deleteTag(Long id) {
-        tagRepository.deleteById(id);
+        tagRepository.delete(id);
     }
 }

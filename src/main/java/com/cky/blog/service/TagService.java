@@ -1,6 +1,6 @@
 package com.cky.blog.service;
 
-import com.cky.blog.entity.Tag;
+import com.cky.blog.po.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

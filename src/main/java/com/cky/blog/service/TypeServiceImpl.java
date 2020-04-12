@@ -1,9 +1,8 @@
-package com.cky.blog.service.impl;
+package com.cky.blog.service;
 
 import com.cky.blog.NotFoundException;
-import com.cky.blog.entity.Type;
-import com.cky.blog.mapper.TypeRepository;
-import com.cky.blog.service.TypeService;
+import com.cky.blog.dao.TypeRepository;
+import com.cky.blog.po.Type;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +29,7 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     @Override
     public Type getType(Long id) {
-        return typeRepository.getOne(id);
+        return typeRepository.findOne(id);
     }
 
     @Override
@@ -61,7 +60,7 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     @Override
     public Type updateType(Long id, Type type) {
-        Type t = typeRepository.getOne(id);
+        Type t = typeRepository.findOne(id);
         if (t == null) {
             throw new NotFoundException("不存在该类型");
         }
@@ -74,6 +73,6 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     @Override
     public void deleteType(Long id) {
-        typeRepository.deleteById(id);
+        typeRepository.delete(id);
     }
 }
