@@ -1,19 +1,13 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://101.132.178.134:3306/blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/blog?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=GMT
     username: root
-    password: 026035
+    password: 123456
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
-
-#pagehelper分页插件配置
-pagehelper.helperDialect=mysql
-pagehelper.reasonable=true
-pagehelper.supportMethodsArguments=true
-pagehelper.params=count=countSql
 
 logging:
   level:
@@ -21,11 +15,6 @@ logging:
     com.lrm: debug
   file: log/blog-dev.log
 
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  page-size-zero: false
-  support-methods-arguments: true
 
 
 

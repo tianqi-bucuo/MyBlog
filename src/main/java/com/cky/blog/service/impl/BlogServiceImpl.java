@@ -1,9 +1,9 @@
 package com.cky.blog.service.impl;
 
 import com.cky.blog.NotFoundException;
-import com.cky.blog.dao.BlogMapper;
 import com.cky.blog.entity.Blog;
 import com.cky.blog.entity.Type;
+import com.cky.blog.mapper.BlogRepository;
 import com.cky.blog.service.BlogService;
 import com.cky.blog.util.MarkdownUtils;
 import com.cky.blog.util.MyBeanUtils;
@@ -26,17 +26,17 @@ public class BlogServiceImpl implements BlogService {
 
 
     @Autowired
-    private BlogMapper blogMapper;
+    private BlogRepository blogRepository;
 
     @Override
     public Blog getBlog(Long id) {
-        return blogMapper.getOne(id);
+        return blogRepository.selectById(id);
     }
 
     @Transactional
     @Override
     public Blog getAndConvert(Long id) {
-        Blog blog = blogMapper.getOne(id);
+        Blog blog = blogRepository.selectById(id);
         if (blog == null) {
             throw new NotFoundException("该博客不存在");
         }
@@ -45,14 +45,14 @@ public class BlogServiceImpl implements BlogService {
         String content = b.getContent();
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
 
-        blogMapper.updateViews(id);
+        blogRepository.updateViews(id);
         return b;
     }
 
 
     @Override
     public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
-        return blogMapper.findAll(new Specification<Blog>() {
+        return blogRepository.findAll(new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
@@ -73,12 +73,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(Pageable pageable) {
-        return blogMapper.findAll(pageable);
+        return blogRepository.findAll(pageable);
     }
 
     @Override
     public Page<Blog> listBlog(Long tagId, Pageable pageable) {
-        return blogMapper.findAll(new Specification<Blog>() {
+        return blogRepository.findAll(new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 Join join = root.join("tags");
@@ -89,29 +89,29 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
-        return blogMapper.findByQuery(query,pageable);
+        return blogRepository.findByQuery(query,pageable);
     }
 
     @Override
     public List<Blog> listRecommendBlogTop(Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC,"updateTime");
         Pageable pageable = new PageRequest(0, size, sort);
-        return blogMapper.findTop(pageable);
+        return blogRepository.findTop(pageable);
     }
 
     @Override
     public Map<String, List<Blog>> archiveBlog() {
-        List<String> years = blogMapper.findGroupYear();
+        List<String> years = blogRepository.findGroupYear();
         Map<String, List<Blog>> map = new HashMap<>();
         for (String year : years) {
-            map.put(year, blogMapper.findByYear(year));
+            map.put(year, blogRepository.findByYear(year));
         }
         return map;
     }
 
     @Override
     public Long countBlog() {
-        return blogMapper.count();
+        return blogRepository.count();
     }
 
 
@@ -125,24 +125,24 @@ public class BlogServiceImpl implements BlogService {
         } else {
             blog.setUpdateTime(new Date());
         }
-        return blogMapper.save(blog);
+        return blogRepository.save(blog);
     }
 
     @Transactional
     @Override
     public Blog updateBlog(Long id, Blog blog) {
-        Blog b = blogMapper.getOne(id);
+        Blog b = blogRepository.getOne(id);
         if (b == null) {
             throw new NotFoundException("该博客不存在");
         }
         BeanUtils.copyProperties(blog,b, MyBeanUtils.getNullPropertyNames(blog));
         b.setUpdateTime(new Date());
-        return blogMapper.save(b);
+        return blogRepository.save(b);
     }
 
     @Transactional
     @Override
     public void deleteBlog(Long id) {
-        blogMapper.deleteById(id);
+        blogRepository.deleteById(id);
     }
 }

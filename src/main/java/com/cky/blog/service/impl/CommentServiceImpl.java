@@ -1,7 +1,7 @@
 package com.cky.blog.service.impl;
 
-import com.cky.blog.dao.CommentMapper;
 import com.cky.blog.entity.Comment;
+import com.cky.blog.mapper.CommentRepository;
 import com.cky.blog.service.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
-    private CommentMapper commentMapper;
+    private CommentRepository commentRepository;
 
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
         Sort sort = new Sort("createTime");
-        List<Comment> comments = commentMapper.findByBlogIdAndParentCommentNull(blogId,sort);
+        List<Comment> comments = commentRepository.findByBlogIdAndParentCommentNull(blogId,sort);
         return eachComment(comments);
     }
 
@@ -31,12 +31,12 @@ public class CommentServiceImpl implements CommentService {
     public Comment saveComment(Comment comment) {
         Long parentCommentId = comment.getParentComment().getId();
         if (parentCommentId != -1) {
-            comment.setParentComment(commentMapper.getOne(parentCommentId));
+            comment.setParentComment(commentRepository.getOne(parentCommentId));
         } else {
             comment.setParentComment(null);
         }
         comment.setCreateTime(new Date());
-        return commentMapper.save(comment);
+        return commentRepository.save(comment);
     }
 
 

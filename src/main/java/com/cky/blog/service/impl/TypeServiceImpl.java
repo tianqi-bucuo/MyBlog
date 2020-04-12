@@ -1,8 +1,8 @@
 package com.cky.blog.service.impl;
 
 import com.cky.blog.NotFoundException;
-import com.cky.blog.dao.TypeMapper;
 import com.cky.blog.entity.Type;
+import com.cky.blog.mapper.TypeRepository;
 import com.cky.blog.service.TypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,34 +19,34 @@ import java.util.List;
 public class TypeServiceImpl implements TypeService {
 
     @Autowired
-    private TypeMapper typeMapper;
+    private TypeRepository typeRepository;
 
     @Transactional
     @Override
     public Type saveType(Type type) {
-        return typeMapper.save(type);
+        return typeRepository.save(type);
     }
 
     @Transactional
     @Override
     public Type getType(Long id) {
-        return typeMapper.getOne(id);
+        return typeRepository.getOne(id);
     }
 
     @Override
     public Type getTypeByName(String name) {
-        return typeMapper.findByName(name);
+        return typeRepository.findByName(name);
     }
 
     @Transactional
     @Override
     public Page<Type> listType(Pageable pageable) {
-        return typeMapper.findAll(pageable);
+        return typeRepository.findAll(pageable);
     }
 
     @Override
     public List<Type> listType() {
-        return typeMapper.findAll();
+        return typeRepository.findAll();
     }
 
 
@@ -54,19 +54,19 @@ public class TypeServiceImpl implements TypeService {
     public List<Type> listTypeTop(Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC,"blogs.size");
         Pageable pageable = new PageRequest(0,size,sort);
-        return typeMapper.findTop(pageable);
+        return typeRepository.findTop(pageable);
     }
 
 
     @Transactional
     @Override
     public Type updateType(Long id, Type type) {
-        Type t = typeMapper.getOne(id);
+        Type t = typeRepository.getOne(id);
         if (t == null) {
             throw new NotFoundException("不存在该类型");
         }
         BeanUtils.copyProperties(type,t);
-        return typeMapper.save(t);
+        return typeRepository.save(t);
     }
 
 
@@ -74,6 +74,6 @@ public class TypeServiceImpl implements TypeService {
     @Transactional
     @Override
     public void deleteType(Long id) {
-        typeMapper.deleteById(id);
+        typeRepository.deleteById(id);
     }
 }

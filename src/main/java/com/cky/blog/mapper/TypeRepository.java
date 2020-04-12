@@ -1,4 +1,4 @@
-package com.cky.blog.dao;
+package com.cky.blog.mapper;
 
 import com.cky.blog.entity.Type;
 import org.springframework.data.domain.Pageable;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface TypeMapper extends JpaRepository<Type,Long> {
+public interface TypeRepository extends JpaRepository<Type,Long> {
 
     Type findByName(String name);
 
