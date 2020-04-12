@@ -9,11 +9,11 @@ spring:
       ddl-auto: none
     show-sql: false
 
-logging:
-  level:
-    root: warn
-    com.lrm: info
-  file: log/blog-pro.log
+#logging:
+#  level:
+#    root: warn
+#    com.lrm: info
+#  file: log/blog-pro.log
 
 
 

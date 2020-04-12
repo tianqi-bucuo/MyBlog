@@ -9,11 +9,11 @@ spring:
       ddl-auto: none
     show-sql: true
 
-logging:
-  level:
-    root: info
-    com.lrm: debug
-  file: log/blog-dev.log
+#logging:
+#  level:
+#    root: info
+#    com.lrm: debug
+#  file: log/blog-dev.log
 
 
 
